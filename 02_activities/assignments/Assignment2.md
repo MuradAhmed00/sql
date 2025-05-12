@@ -54,7 +54,9 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+Type 1 is the overwrite approach. Our table is the same CUSTOMER_ADDRESS table and we would update the columns AddressID, CustomerID, Street, City, State, and Zipcode with each change/update. We wil not preserve old addresses only the most recent (MAX) one will be kept
+
+Type 2 will retain changes through adding a new row to track the historical data. We would add rows to the type 1 approach, thus having a table that includes the following fields:  AddressID, CustomerID, Street, City, State, and Zipcode with the addition of EffectiveDate and CurrentFlag, underscoring when the update was last current and whether or not it is current now. This allows us to retain the old, historical address data while leveraging the current, most up to date address information in the same table. 
 ```
 
 ***
